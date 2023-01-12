@@ -4,7 +4,7 @@ window.onload = loadPokemon
 
 function loadPokemon() {
   try{
-    fetch(`https://pokeapi.co/api/v2/pokemon/`,{
+    fetch(`https://pokeapi.co/api/v2/pokemon?limit=1000`,{
       method: 'GET',
       headers: {
           'Accept': 'application/json',
