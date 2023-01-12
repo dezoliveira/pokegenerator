@@ -35,7 +35,9 @@ function mountComboBox(data) {
   for (let i = 0; i < data.results.length; i++){
     html += `
       <option value="${i}">
-        ${data.results[i].name}
+        ${captalizeText(
+          data.results[i].name)
+        }
       </option>
     `
   }
@@ -46,4 +48,8 @@ function mountComboBox(data) {
     </option>
     ${html}
   `
+}
+
+function captalizeText(text) {
+  return text.charAt(0).toUpperCase() + text.slice(1)
 }
