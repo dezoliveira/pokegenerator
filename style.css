@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Roboto Mono', sans-serif;
+}
+
+body {
+  display: grid;
+  grid-gap: 15px;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.pokemons select {
+  font-family: 'Roboto Mono' ,sans-serif;
+  font-size: 14px;
+  padding: 2px;
+  border: 2px solid;
+  border-radius: 2px;
+}

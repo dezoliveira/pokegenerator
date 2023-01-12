@@ -8,12 +8,27 @@
   <title>Document</title>
 </head>
 <body>
-  <div>
+  <div class="menu">
+    <h1>Pokegenarator</h1>
+
+    <div class="pokemons">
+      <label>Pokemon:</label>
+      <select name="combobox" id="cmbPokemon">
+        <option value="0">Selecione um pokemon</option>
+      </select>
+    </div>
+
+    <div class="abilities">
+      <label>Habilidades:</label>
+      <span><input type="checkbox"/>Habilidade 1</span>
+      <span><input type="checkbox"/>Habilidade 2</span>
+    </div>
+
+    <div class="card">
+
+    </div>
 
   </div>
-  <label>Pokemon: </label>
-  <input type="text" id="pokemon" />
-  <button id="searchPokemon">Pesquisar</button> 
   <script src="./script.js"></script>
 </body>
 </html>
