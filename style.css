@@ -21,13 +21,38 @@ h1 {
 .menu {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 15px;
 }
 
 .pokemons select {
-  font-family: 'Roboto Mono' ,sans-serif;
-  font-size: 14px;
   padding: 2px;
   border: 2px solid;
   border-radius: 2px;
+  
+  font-family: 'Roboto Mono' ,sans-serif;
+  font-size: 14px;
+}
+
+.card {
+  width: 430px;
+  height: 300px;
+  padding: 15px;
+
+  display: flex;
+  flex-direction: column;
+
+  border: 2px solid #000;
+}
+
+.atributes {
+  display: flex;
+  flex-direction: column;
+
+  padding: 15px 0 ;
+}
+
+.section2 {
+  display: flex;
+  justify-content: space-between;
 }
