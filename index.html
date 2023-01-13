@@ -23,31 +23,75 @@
     </div>
 
     <div class="abilities">
-      <label>Habilidades:</label>
-      <span><input type="checkbox"/>Habilidade 1</span>
-      <span><input type="checkbox"/>Habilidade 2</span>
+      <label>Abilities:</label>
+      <span>
+        <label>
+          <input id="abl1" type="checkbox"/>Habilidade 1
+        </label>
+      </span>
+      <span>
+        <label>
+          <input id="abl2" type="checkbox"/>Habilidade 2
+        </label>
+      </span>
       <span>
         <i class="fa fa-question-circle"></i>
       </span>
     </div>
 
-    <div class="card">
+    <div id="card" class="card">
       <section class="section1">
-        <h2>Pikachu</h2>
-        <label>Tipo</label>
-        <label>Peso</label>
+        <h2 id="name">Pikachu</h2>
+
+        <label>
+          Type:
+          <span id="type">
+            
+          </span>
+        </label>
+
+        <label>
+          Weight:
+          <span id="weight">
+
+          </span>
+        </label>
       </section>
 
       <section class="section2">
         <div class="atributes">
-          <label>HP</label>
-          <label>ATK</label>
-          <label>DEF</label>
-          <label>SPECIAL</label>
+          <label>
+            HP:
+            <span id="hp">
+              
+            </span>
+          </label>
+
+          <label>
+            ATK:
+            <span id="atk">
+              
+            </span>
+          </label>
+
+          <label>
+            DEF:
+            <span id="def">
+              
+            </span>
+          </label>
+
+          <label>
+            SPECIAL:
+            <span id="special">
+              
+            </span>
+
+          </label>
         </div>
 
         <div class="image">
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/25.svg"/>
+          <img id="image" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/25.svg"/>
         </div>
       </section>
 

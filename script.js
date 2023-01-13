@@ -2,13 +2,13 @@ let cmbPokemon = document.getElementById('cmbPokemon')
 cmbPokemon.addEventListener('change', showCard)
 window.onload = mountComboBox
 
-function loadPokemon(name) {
+function loadPokemon(pokemon) {
   const url = "https://pokeapi.co/api/v2/pokemon/"
   const param1 = "?limit=250"
-  let param2 = name
+  let param2 = pokemon
 
   let params = 
-    name ? 
+    pokemon ? 
       param2.toLowerCase() 
     : param1
 
@@ -70,8 +70,26 @@ function captalizeText(text) {
 }
 
 async function showCard() {
-  let e = document.getElementById('cmbPokemon')
-  let name = e.options[e.selectedIndex].text
-  let data = await loadPokemon(name)
+  let card = document.getElementById("card")
+  let cmbPokemon = document.getElementById('cmbPokemon')
+  let pokemon = cmbPokemon.options[cmbPokemon.selectedIndex].text
+
+  let data = await loadPokemon(pokemon)
+
   console.log(data)
+
+  let name = document.getElementById('name')
+  let type = document.getElementById('type')
+  let weight = document.getElementById('weight')
+  let hp = document.getElementById('hp')
+  let atk = document.getElementById('atk')
+  let def = document.getElementById('def')
+  let special = document.getElementById('special')
+  let image = document.getElementById('image')
+
+  console.log(image)
+
+  name.textContent = captalizeText(data.name)
+  type.textContent = captalizeText(data.types[0].type.name)
+  image.src = data.sprites.other.dream_world.front_default
 }
