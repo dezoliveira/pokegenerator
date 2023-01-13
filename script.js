@@ -30,13 +30,18 @@ function loadPokemon() {
 }
 
 function mountComboBox(data) {
+  let pokeArray = data.results.sort(function(a, b) {
+    if(a.name < b.name) { return -1; }
+    if(a.name > b.name) { return 1; }
+    return 0;
+  });
   let html = ''
-  console.log(data)
-  for (let i = 0; i < data.results.length; i++){
+
+  for (let i = 0; i < pokeArray.length; i++){
     html += `
       <option value="${i}">
         ${captalizeText(
-          data.results[i].name)
+          pokeArray[i].name)
         }
       </option>
     `
