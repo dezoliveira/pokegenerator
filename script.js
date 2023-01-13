@@ -1,10 +1,12 @@
 let cmbPokemon = document.getElementById('cmbPokemon')
-cmbPokemon.addEventListener('change', loadCard)
+cmbPokemon.addEventListener('change', showCard)
 window.onload = loadPokemon
 
 function loadPokemon(name) {
+  let params = "limit=250"
+  
   try{
-    fetch(`https://pokeapi.co/api/v2/pokemon?limit=250`,{
+    fetch(`https://pokeapi.co/api/v2/pokemon?${params}`,{
       method: 'GET',
       headers: {
           'Accept': 'application/json',
@@ -21,11 +23,7 @@ function loadPokemon(name) {
       }
     })
     .then(data => {
-      if(name != ''){
-        mountComboBox(data)
-      }else {
-        showCard
-      }
+      mountComboBox(data)
     })
   } catch(e) {
     logMyErrors(e)
@@ -63,7 +61,7 @@ function captalizeText(text) {
   return text.charAt(0).toUpperCase() + text.slice(1)
 }
 
-function loadCard() {
+function showCard() {
   let e = document.getElementById('cmbPokemon')
   let name = e.options[e.selectedIndex].text
   console.log(name)
