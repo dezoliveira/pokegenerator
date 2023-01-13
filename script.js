@@ -1,42 +1,45 @@
 let cmbPokemon = document.getElementById('cmbPokemon')
 cmbPokemon.addEventListener('change', showCard)
-window.onload = loadPokemon
+window.onload = mountComboBox
 
 function loadPokemon(name) {
-  let params = "limit=250"
-  
-  try{
-    fetch(`https://pokeapi.co/api/v2/pokemon?${params}`,{
+  const url = "https://pokeapi.co/api/v2/pokemon/"
+  const param1 = "?limit=250"
+  let param2 = name
+
+  let params = 
+    name ? 
+      param2.toLowerCase() 
+    : param1
+
+  let x =
+    fetch(`${url}${params}`,{
       method: 'GET',
       headers: {
           'Accept': 'application/json',
-          
       }
     })
-    .then((res) => {
-      if(res.status == 200){
-        return res.json()
-      }
-      else{
-        console.log('Ocorreu um erro de api')
-        return
-      }
-    })
+    .then((res) => res.json())
     .then(data => {
-      mountComboBox(data)
+      return(data)
     })
-  } catch(e) {
-    logMyErrors(e)
-  }
-  
+
+    return x
 }
 
-function mountComboBox(data) {
-  let pokeArray = data.results.sort(function(a, b) {
-    if(a.name < b.name) { return -1; }
-    if(a.name > b.name) { return 1; }
-    return 0;
-  });
+async function mountComboBox() {
+  let data = await loadPokemon()
+  console.log(data)
+  let pokeArray = data.results.sort((a, b) => {
+    if(a.name < b.name) { 
+      return -1 
+    }
+    if(a.name > b.name) { 
+      return 1 
+    }
+    return 0
+  })
+
   let html = ''
 
   for (let i = 0; i < pokeArray.length; i++){
@@ -58,12 +61,17 @@ function mountComboBox(data) {
 }
 
 function captalizeText(text) {
-  return text.charAt(0).toUpperCase() + text.slice(1)
+  return (
+    text
+      .charAt(0)
+        .toUpperCase() 
+          + text.slice(1)
+  )
 }
 
-function showCard() {
+async function showCard() {
   let e = document.getElementById('cmbPokemon')
   let name = e.options[e.selectedIndex].text
-  console.log(name)
-  loadPokemon(name)
+  let data = await loadPokemon(name)
+  console.log(data)
 }
