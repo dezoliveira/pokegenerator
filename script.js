@@ -89,7 +89,17 @@ async function showCard() {
 
   console.log(image)
 
+  card.style.display = "flex"
+
   name.textContent = captalizeText(data.name)
   type.textContent = captalizeText(data.types[0].type.name)
+  weight.textContent = data.weight
+
+  let arr = [hp, atk, def, special]
+
+  for (a in arr) {
+    arr[a].textContent = data.stats[a].base_stat
+  }
+
   image.src = data.sprites.other.dream_world.front_default
 }
