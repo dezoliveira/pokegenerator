@@ -4,7 +4,7 @@ window.onload = mountComboBox
 
 function loadPokemon(pokemon) {
   const url = "https://pokeapi.co/api/v2/pokemon/"
-  const param1 = "?limit=250"
+  const param1 = "?limit=1000"
   let param2 = pokemon
 
   let params = 
@@ -87,6 +87,14 @@ async function showCard() {
   let special = document.getElementById('special')
   let image = document.getElementById('image')
 
+  // let labels = document.querySelectorAll('#card Label>span')
+
+  // let arr = []
+
+  // for(l in labels){
+  //   arr[l] = labels[l].id != und
+  // }
+
   console.log(image)
 
   card.style.display = "flex"
@@ -102,4 +110,41 @@ async function showCard() {
   }
 
   image.src = data.sprites.other.dream_world.front_default
+
+  circleColor(data.types[0].type.name)
+}
+
+function circleColor(type){
+
+  let hex = getHex(type)
+
+  let circle = document.querySelector('.circle')
+  circle.style.background = `${hex}`
+}
+
+function getHex(type) {
+
+  const colors = [
+    {type: "normal", hex: "#B7B7A9"},
+    {type: "fire", hex: "#FF6144"},
+    {type: "water", hex: "#39f"},
+    {type: "eletric", hex: "#fc3"},
+    {type: "grass", hex: "#7c5"},
+    {type: "ice", hex: "#6cf"},
+    {type: "fighting", hex: "#b54"},
+    {type: "poison", hex: "#a59"},
+    {type: "ground", hex: "#db5"},
+    {type: "flying", hex: "#89f"},
+    {type: "psychic", hex: "#f59"},
+    {type: "bug", hex: "#ab2"},
+    {type: "rock", hex: "#ba6"},
+    {type: "ghost", hex: "#66b"},
+    {type: "dragon", hex: "#76e"},
+    {type: "dark", hex: "#754"},
+    {type: "steel", hex: "#aab"},
+    {type: "fairy", hex: "#e9e"},
+  ]
+
+  let x = colors.filter(h => h.type == type)
+  return x[0].hex
 }
