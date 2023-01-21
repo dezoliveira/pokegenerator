@@ -2,6 +2,9 @@ let cmbPokemon = document.getElementById('cmbPokemon')
 cmbPokemon.addEventListener('change', showCard)
 window.onload = mountComboBox
 
+// let btnAdd = document.getElementById('btnAdd')
+// btnAdd.addEventListener('click', addToPokedex)
+
 function loadPokemon(pokemon) {
   const url = "https://pokeapi.co/api/v2/pokemon/"
   const param1 = "?limit=1000"
@@ -87,6 +90,17 @@ async function showCard() {
   let special = document.getElementById('special')
   let image = document.getElementById('image')
 
+  let abl1 = document.getElementById('abl1')
+  let abl2 = document.getElementById('abl2')
+
+  let check1 = document.getElementById('check1')
+  let check2 = document.getElementById('check2')
+
+  let isHidden1
+  let isHidden2
+
+  
+
   // let labels = document.querySelectorAll('#card Label>span')
 
   // let arr = []
@@ -110,8 +124,23 @@ async function showCard() {
   }
 
   image.src = data.sprites.other.dream_world.front_default
-
   circleColor(data.types[0].type.name)
+
+  abl1.textContent = data.abilities[0].ability.name
+  isHidden1 = data.abilities[0].is_hidden
+
+  isHidden1 ? check1.checked = false : check1.checked = true
+  check1.disabled = true
+
+  abl2.textContent = data.abilities[1].ability.name
+  isHidden2 = data.abilities[1].is_hidden
+
+  isHidden2 ? check2.checked = false : check2.checked = true
+  check2.disabled = true
+
+  const obj = [
+    {}
+  ]
 }
 
 function circleColor(type){
@@ -147,4 +176,31 @@ function getHex(type) {
 
   let x = colors.filter(h => h.type == type)
   return x[0].hex
+}
+
+async function addToPokedex(pokemon){
+  let pokeList = document.getElementById('pokeList')
+
+  let name = pokemon
+              .parentNode
+                .parentNode
+                  .children
+                    .name
+                      .textContent
+
+  let data = await loadPokemon(name)
+
+  console.log(data)
+
+  let html = ''
+
+  html = `
+    <ul>
+      <li>
+
+      </li>
+    </ul>
+  `
+
+  pokeList.innerHTML += html
 }

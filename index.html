@@ -14,32 +14,31 @@
 
     <div class="pokemons">
       <label>Pokemon:</label>
-      <select name="combobox" id="cmbPokemon">
-        <option value="0">Selecione um pokemon</option>
-      </select>
+      <span class="select is-primary">
+        <select id="cmbPokemon" name="combobox" class="select is-primary">
+          <option value="0">Selecione um pokemon</option>
+        </select>
+      </span>
+
       <span>
         <i class="fa fa-question-circle"></i>
       </span>
     </div>
 
-    <div class="abilities">
+    <div id="abilities" class="abilities">
       <label>Abilities:</label>
-      <span>
-        <label>
-          <input id="abl1" type="checkbox"/>Habilidade 1
+      <label class="checkbox">
+        <input id="check1" type="checkbox"/><span id="abl1">Ability 1</span>
+      </label>
+        <label class="checkbox">
+          <input id="check2" type="checkbox"/><span id="abl2">Ability 2</span>
         </label>
-      </span>
-      <span>
-        <label>
-          <input id="abl2" type="checkbox"/>Habilidade 2
-        </label>
-      </span>
       <span>
         <i class="fa fa-question-circle"></i>
       </span>
     </div>
 
-    <div id="card" class="card" style="display: none; position: relative;">
+    <div id="card" class="box card" style="display: none; position: relative;">
       <section class="section1">
         <h2 id="name">Pikachu</h2>
 
@@ -90,6 +89,22 @@
 
           </label>
         </div>
+
+        <!-- <div id="abilities" class="abilities">
+          <label>
+            Abilities:
+          </label>
+        </div> -->
+
+        <div>
+          <button 
+            id="btnAdd" 
+            class="button is-primary" 
+            onclick="addToPokedex(this)"
+          >
+            Adicionar
+          </button>
+        </div>
       </section>
 
       <section class="section2">
@@ -98,6 +113,10 @@
         </div>
       </section>
 
+    </div>
+
+    <div id="pokeList" class="box">
+      
     </div>
 
   </div>
