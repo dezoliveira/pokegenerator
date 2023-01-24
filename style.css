@@ -8,21 +8,19 @@ html {
   font-family: 'Roboto Mono', sans-serif;
 }
 
-body {
+.menu {
   display: grid;
   grid-gap: 15px;
   justify-content: center;
 }
 
-h1 {
-  text-align: center;
+.menu2 {
+  display: flex;
+  justify-content: center;
 }
 
-.menu {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 15px;
+h1 {
+  text-align: center;
 }
 
 .pokemons select {

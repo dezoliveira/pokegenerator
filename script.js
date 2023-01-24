@@ -1,9 +1,11 @@
-let cmbPokemon = document.getElementById('cmbPokemon')
-cmbPokemon.addEventListener('change', showCard)
 window.onload = mountComboBox
 
-// let btnAdd = document.getElementById('btnAdd')
-// btnAdd.addEventListener('click', addToPokedex)
+let count = 0
+
+let cmbPokemon = document.getElementById('cmbPokemon')
+cmbPokemon.addEventListener('change', showCard)
+
+let btnAdd = document.getElementById('btnAdd')
 
 function loadPokemon(pokemon) {
   const url = "https://pokeapi.co/api/v2/pokemon/"
@@ -99,18 +101,6 @@ async function showCard() {
   let isHidden1
   let isHidden2
 
-  
-
-  // let labels = document.querySelectorAll('#card Label>span')
-
-  // let arr = []
-
-  // for(l in labels){
-  //   arr[l] = labels[l].id != und
-  // }
-
-  console.log(image)
-
   card.style.display = "flex"
 
   name.textContent = captalizeText(data.name)
@@ -137,10 +127,6 @@ async function showCard() {
 
   isHidden2 ? check2.checked = false : check2.checked = true
   check2.disabled = true
-
-  const obj = [
-    {}
-  ]
 }
 
 function circleColor(type){
@@ -179,6 +165,7 @@ function getHex(type) {
 }
 
 async function addToPokedex(pokemon){
+  count = count + 1
   let pokeList = document.getElementById('pokeList')
 
   let name = pokemon
@@ -189,18 +176,50 @@ async function addToPokedex(pokemon){
                       .textContent
 
   let data = await loadPokemon(name)
-
+  let image = data.sprites.other.dream_world.front_default
   console.log(data)
 
-  let html = ''
+  // let html = ''
 
-  html = `
-    <ul>
-      <li>
+  // html = `
+  //   <ul>
+  //     <li>
+  //       <span>${data.name}</span>
+  //       <span class="image">
+  //         <img src="${image}" />
+  //       </span>
+  //     </li>
+  //   </ul>
+  // `
 
-      </li>
-    </ul>
-  `
+  // pokeList.innerHTML = html
 
-  pokeList.innerHTML += html
+  console.log(count)
+
+  if (count >= 3){
+    btnAdd.disabled = true
+  }
+
+  let div = document.createElement('div')
+  let div2 = document.createElement('div2')
+  let ul = document.createElement('ul')
+  let li = document.createElement('li')
+  let span = document.createElement('span')
+  let span2 = document.createElement('span')
+  let img = document.createElement('img')
+
+  div.className = "box"
+  img.src = data.sprites.other.dream_world.front_default
+  div2.className = "image"
+  span2.textContent = data.name
+
+  div.appendChild(ul)
+  ul.appendChild(li)
+  li.appendChild(span)
+  span.appendChild(div2)
+  div2.appendChild(img)
+  li.appendChild(span2)
+
+  pokeList.appendChild(div)
+
 }
