@@ -75,3 +75,9 @@ h1 {
   width: 135px;
   height: 169px;
 }
+
+.close-icon{
+  position: absolute;
+  right: -10px;
+  top: -15px;
+}

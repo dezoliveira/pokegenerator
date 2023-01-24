@@ -166,8 +166,8 @@ function getHex(type) {
 
 async function addToPokedex(pokemon){
   count = count + 1
-  let pokeList = document.getElementById('pokeList')
 
+  let pokeList = document.getElementById('pokeList')
   let name = pokemon
               .parentNode
                 .parentNode
@@ -176,42 +176,70 @@ async function addToPokedex(pokemon){
                       .textContent
 
   let data = await loadPokemon(name)
-  let image = data.sprites.other.dream_world.front_default
-  console.log(data)
-
-  // let html = ''
-
-  // html = `
-  //   <ul>
-  //     <li>
-  //       <span>${data.name}</span>
-  //       <span class="image">
-  //         <img src="${image}" />
-  //       </span>
-  //     </li>
-  //   </ul>
-  // `
-
-  // pokeList.innerHTML = html
-
-  console.log(count)
+  let image = data
+                  .sprites
+                    .other
+                      .dream_world.front_default
 
   if (count >= 3){
     btnAdd.disabled = true
+  }else{
+    btnAdd.disabled = false
   }
 
   let div = document.createElement('div')
+  div.id = data.id
+  div.className = "box"
+  div.style = `
+    margin: 20px; 
+    height: 240px
+  `
+  
   let div2 = document.createElement('div2')
+  div2.className = "image"
+
   let ul = document.createElement('ul')
   let li = document.createElement('li')
   let span = document.createElement('span')
   let span2 = document.createElement('span')
-  let img = document.createElement('img')
+  let span3 = document.createElement('span')
 
-  div.className = "box"
-  img.src = data.sprites.other.dream_world.front_default
-  div2.className = "image"
-  span2.textContent = data.name
+  let img = document.createElement('img')
+  img.src = data
+                .sprites
+                  .other
+                    .dream_world.
+                      front_default
+
+  let button = document.createElement('button')
+  button.id = "btnClose"
+  button.className = `
+    delete 
+    is-medium 
+    has-background-primary
+  `
+
+  button.onclick = ((x) => {
+    let pokemon = x
+              .target
+                .parentNode
+                  .parentNode
+                    .parentNode
+                      .parentNode
+    pokemon.style.display = "none"
+    count = count - 1
+
+    if (count >= 3){
+      btnAdd.disabled = true
+    }else{
+      btnAdd.disabled = false
+    }
+  })
+
+  span2.textContent = captalizeText(data.name)
+  span3.className = "close-icon"
+
+  li.style.position = "relative"
 
   div.appendChild(ul)
   ul.appendChild(li)
@@ -219,7 +247,8 @@ async function addToPokedex(pokemon){
   span.appendChild(div2)
   div2.appendChild(img)
   li.appendChild(span2)
+  li.appendChild(span3)
+  span3.appendChild(button)
 
   pokeList.appendChild(div)
-
 }
