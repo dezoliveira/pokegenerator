@@ -10,10 +10,21 @@
   <script src="https://cdn.jsdelivr.net/npm/lazy-javascript@1.0.8/lazy.min.js"></script>
 </head>
 <body>
+  <section class="hero is-primary columns is-offset-one-quarter is-half">
+    <div class="hero-body" style="text-align:center">
+      <p class="title">
+        PokeGenerator
+      </p>
+      <p class="subtitle">
+        Created with Bulma CSS and PokeAPI
+      </p>
+    </div>
+  </section>
+  
   <div class="menu">
-    <h1>Pokegenarator</h1>
 
     <div class="pokemons">
+      <h1 class="is-size-5 p-3">Select a pokemon</h1>
       <label>Pokemon:</label>
       <span class="select is-primary">
         <select id="cmbPokemon" name="combobox" class="select is-primary">
@@ -21,19 +32,6 @@
         </select>
       </span>
 
-      <span>
-        <i class="fa fa-question-circle"></i>
-      </span>
-    </div>
-
-    <div id="abilities" class="abilities">
-      <label>Abilities:</label>
-      <label class="checkbox">
-        <input id="check1" type="checkbox"/><span id="abl1">Ability 1</span>
-      </label>
-        <label class="checkbox">
-          <input id="check2" type="checkbox"/><span id="abl2">Ability 2</span>
-        </label>
       <span>
         <i class="fa fa-question-circle"></i>
       </span>
@@ -91,12 +89,6 @@
           </label>
         </div>
 
-        <!-- <div id="abilities" class="abilities">
-          <label>
-            Abilities:
-          </label>
-        </div> -->
-
         <div>
           <button 
             id="btnAdd" 
@@ -121,6 +113,12 @@
   <section id="pokeList" class="menu2">
 
   </section>
+
+  <div class="btnConfirm">
+    <button id="btnConfirm" class="button is-primary" style="display: none;">
+      Confirm
+    </button>
+  </div>
 
   <script src="./script.js"></script>
 </body>

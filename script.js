@@ -3,9 +3,11 @@ window.onload = mountComboBox
 let count = 0
 
 let cmbPokemon = document.getElementById('cmbPokemon')
-cmbPokemon.addEventListener('change', showCard)
-
 let btnAdd = document.getElementById('btnAdd')
+let btnConfirm = document.getElementById('btnConfirm')
+
+cmbPokemon.addEventListener('change', showCard)
+btnConfirm.addEventListener('click', showSwal)
 
 function loadPokemon(pokemon) {
   const url = "https://pokeapi.co/api/v2/pokemon/"
@@ -100,6 +102,7 @@ async function showCard() {
 
   let isHidden1
   let isHidden2
+  let img
 
   card.style.display = "flex"
 
@@ -113,7 +116,8 @@ async function showCard() {
     arr[a].textContent = data.stats[a].base_stat
   }
 
-  image.src = data.sprites.other.dream_world.front_default
+  img = data.sprites.other.dream_world.front_default
+  image.src = img ? img : `./info/no-image`
   circleColor(data.types[0].type.name)
 
   abl1.textContent = data.abilities[0].ability.name
@@ -183,13 +187,15 @@ async function addToPokedex(pokemon){
 
   if (count >= 3){
     btnAdd.disabled = true
+    toggleConfirm(true)
   }else{
     btnAdd.disabled = false
+    toggleConfirm(false)
   }
 
   let div = document.createElement('div')
   div.id = data.id
-  div.className = "box"
+  div.className = "card"
   div.style = `
     margin: 20px; 
     height: 240px
@@ -205,11 +211,7 @@ async function addToPokedex(pokemon){
   let span3 = document.createElement('span')
 
   let img = document.createElement('img')
-  img.src = data
-                .sprites
-                  .other
-                    .dream_world.
-                      front_default
+  img.src = image ? image : `./info/no-image`
 
   let button = document.createElement('button')
   button.id = "btnClose"
@@ -231,8 +233,10 @@ async function addToPokedex(pokemon){
 
     if (count >= 3){
       btnAdd.disabled = true
+      toggleConfirm(true)
     }else{
       btnAdd.disabled = false
+      toggleConfirm(false)
     }
   })
 
@@ -251,4 +255,16 @@ async function addToPokedex(pokemon){
   span3.appendChild(button)
 
   pokeList.appendChild(div)
+}
+
+function toggleConfirm(value){
+  if(value === true){
+    btnConfirm.style.display = "block"
+  }else{
+    btnConfirm.style.display = "none"
+  }
+}
+
+function showSwal(){
+  
 }

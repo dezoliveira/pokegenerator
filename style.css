@@ -76,8 +76,13 @@ h1 {
   height: 169px;
 }
 
-.close-icon{
+.close-icon {
   position: absolute;
   right: -10px;
-  top: -15px;
+  top: -10px;
+}
+
+.btnConfirm {
+  display: flex;
+  justify-content: center;
 }
