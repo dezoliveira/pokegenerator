@@ -97,12 +97,7 @@ async function showCard() {
   let abl1 = document.getElementById('abl1')
   let abl2 = document.getElementById('abl2')
 
-  let check1 = document.getElementById('check1')
-  let check2 = document.getElementById('check2')
-
-  let isHidden1
-  let isHidden2
-  let img
+  let img = 
 
   card.style.display = "flex"
 
@@ -123,14 +118,8 @@ async function showCard() {
   abl1.textContent = data.abilities[0].ability.name
   isHidden1 = data.abilities[0].is_hidden
 
-  isHidden1 ? check1.checked = false : check1.checked = true
-  check1.disabled = true
-
   abl2.textContent = data.abilities[1].ability.name
   isHidden2 = data.abilities[1].is_hidden
-
-  isHidden2 ? check2.checked = false : check2.checked = true
-  check2.disabled = true
 }
 
 function circleColor(type){
@@ -280,10 +269,13 @@ function showSwal(){
         title: 'Good luck!',
         confirmButtonColor: '#00d1b2',
         confirmButtonText: "Thanks, Bro!"
-    }, 
-    setTimeout(() => {
-      window.location.reload()
-    }, 2000))
+    }).then((result) => {
+      if (result.isConfirmed){
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000)
+      }
+    })
   }else{
       return
     }
