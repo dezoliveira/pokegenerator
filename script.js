@@ -266,5 +266,26 @@ function toggleConfirm(value){
 }
 
 function showSwal(){
-  
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "Are you ready to Pokemon's Adventure ?",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3ec487',
+    cancelButtonColor: '#f14668',
+    confirmButtonText: `Yes, LET'S ROCK!`
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({
+        title: 'Good luck!',
+        confirmButtonColor: '#00d1b2',
+        confirmButtonText: "Thanks, Bro!"
+    }, 
+    setTimeout(() => {
+      window.location.reload()
+    }, 2000))
+  }else{
+      return
+    }
+  })
 }
