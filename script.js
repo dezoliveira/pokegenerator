@@ -97,6 +97,8 @@ async function showCard() {
   let abl1 = document.getElementById('abl1')
   let abl2 = document.getElementById('abl2')
 
+
+
   let img = 
 
   card.style.display = "flex"
@@ -128,6 +130,12 @@ function circleColor(type){
 
   let circle = document.querySelector('.circle')
   circle.style.background = `${hex}`
+
+  let abl1 = document.getElementById('abl1')
+  let abl2 = document.getElementById('abl2')
+
+  abl1.style.background = `${hex}`
+  abl2.style.background = `${hex}`
 }
 
 function getHex(type) {
