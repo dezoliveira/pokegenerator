@@ -25,7 +25,7 @@
   <div class="menu">
 
     <div class="pokemons">
-      <h1 class="is-size-5 p-3">Select a pokemon</h1>
+      <h1 class="is-size-5 p-3">Please, select a pokemon</h1>
       <label>Pokemon:</label>
       <span class="select is-primary">
         <select id="cmbPokemon" name="combobox" class="select is-primary">
@@ -33,17 +33,17 @@
         </select>
       </span>
 
-      <span>
+      <span class="tooltip has-tooltip-top has-tooltip-multiline" data-tooltip="Choose a pokemon to your journey!">
         <i class="fa fa-question-circle"></i>
       </span>
     </div>
 
     <div id="card" class="box card" style="display: none; position: relative;">
       <section class="section1">
-        <h2 id="name">Pikachu</h2>
+        <label id="name" class="is-size-3"></label>
 
         <label>
-          Type:
+          <strong>Type:</strong>
           <span id="type">
 
           </span>
@@ -53,7 +53,7 @@
         </label>
 
         <label>
-          Weight:
+          <strong>Weight:</strong>
           <span id="weight">
 
           </span>
@@ -61,28 +61,28 @@
 
         <div class="atributes">
           <label>
-            HP:
+            <strong>HP:</strong>
             <span id="hp">
               
             </span>
           </label>
 
           <label>
-            ATK:
+            <strong>ATK:</strong>
             <span id="atk">
               
             </span>
           </label>
 
           <label>
-            DEF:
+            <strong>DEF:</strong>
             <span id="def">
               
             </span>
           </label>
 
           <label>
-            SPECIAL:
+            <strong>SPECIAL:</strong>
             <span id="special">
               
             </span>
@@ -91,7 +91,7 @@
         </div>
 
         <div>
-          <h2>Abilities:</h2>
+          <label class="is-size-5">Abilities:</label>
         </div>
         <div class="mb-4">
           <label>
@@ -110,6 +110,9 @@
           >
             Adicionar
           </button>
+          <span class="tooltip has-tooltip-top has-tooltip-multiline" data-tooltip="Now you have to add at least 3 pokemons to your pokedex!">
+            <i class="fa fa-question-circle"></i>
+          </span>
         </div>
       </section>
 

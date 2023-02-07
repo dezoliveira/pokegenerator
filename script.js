@@ -77,13 +77,12 @@ function captalizeText(text) {
 }
 
 async function showCard() {
-  let card = document.getElementById("card")
   let cmbPokemon = document.getElementById('cmbPokemon')
   let pokemon = cmbPokemon.options[cmbPokemon.selectedIndex].text
-
   let data = await loadPokemon(pokemon)
 
-  console.log(data)
+  let card = document.getElementById("card")
+  card.style.display = "flex"
 
   let name = document.getElementById('name')
   let type = document.getElementById('type')
@@ -97,12 +96,6 @@ async function showCard() {
   let abl1 = document.getElementById('abl1')
   let abl2 = document.getElementById('abl2')
 
-
-
-  let img = 
-
-  card.style.display = "flex"
-
   name.textContent = captalizeText(data.name)
   type.textContent = captalizeText(data.types[0].type.name)
   weight.textContent = data.weight
@@ -115,27 +108,31 @@ async function showCard() {
 
   img = data.sprites.other.dream_world.front_default
   image.src = img ? img : `./info/no-image`
-  circleColor(data.types[0].type.name)
+  let color = circleColor(data.types[0].type.name)
 
-  abl1.textContent = data.abilities[0].ability.name
-  isHidden1 = data.abilities[0].is_hidden
+  let ability1 = data.abilities[0].ability.name
+  let ability2 = 
+    data.abilities[1] ? 
+      data.abilities[1].ability.name 
+    : null
 
-  abl2.textContent = data.abilities[1].ability.name
-  isHidden2 = data.abilities[1].is_hidden
+  abl1.textContent = ability1
+  abl2.textContent = ability2
+
+  let circle = document.querySelector('.circle')
+  circle.style.background = `${color}`
+
+  console.log(ability1)
+  console.log(ability2)
+
+  ability1 !== null ? abl1.style.background = `${color}` : abl1.style.background = ''
+  ability2 !== null ? abl2.style.background = `${color}` : abl2.style.background = ''
 }
 
 function circleColor(type){
 
   let hex = getHex(type)
-
-  let circle = document.querySelector('.circle')
-  circle.style.background = `${hex}`
-
-  let abl1 = document.getElementById('abl1')
-  let abl2 = document.getElementById('abl2')
-
-  abl1.style.background = `${hex}`
-  abl2.style.background = `${hex}`
+  return hex
 }
 
 function getHex(type) {
@@ -162,7 +159,10 @@ function getHex(type) {
   ]
 
   let x = colors.filter(h => h.type == type)
-  return x[0].hex
+
+  if (x.length){
+    return x[0].hex
+  }
 }
 
 async function addToPokedex(pokemon){
@@ -195,17 +195,33 @@ async function addToPokedex(pokemon){
   div.className = "card"
   div.style = `
     margin: 20px; 
-    height: 240px
+    height: 240px;
   `
   
   let div2 = document.createElement('div2')
   div2.className = "image"
 
   let ul = document.createElement('ul')
+
   let li = document.createElement('li')
+  li.style.position = "relative"
+
+  let hr = document.createElement('hr')
+  hr.style.margin = 0
+
   let span = document.createElement('span')
+
   let span2 = document.createElement('span')
+  span2.textContent = captalizeText(data.name)
+  span2.className = "is-size-5"
+  span2.style = `
+    display: block;
+    text-align: center;
+    padding: 10px;
+  `
+
   let span3 = document.createElement('span')
+  span3.className = "close-icon"
 
   let img = document.createElement('img')
   img.src = image ? image : `./info/no-image`
@@ -237,16 +253,12 @@ async function addToPokedex(pokemon){
     }
   })
 
-  span2.textContent = captalizeText(data.name)
-  span3.className = "close-icon"
-
-  li.style.position = "relative"
-
   div.appendChild(ul)
   ul.appendChild(li)
   li.appendChild(span)
   span.appendChild(div2)
   div2.appendChild(img)
+  li.appendChild(hr)
   li.appendChild(span2)
   li.appendChild(span3)
   span3.appendChild(button)
