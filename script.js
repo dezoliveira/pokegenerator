@@ -36,7 +36,6 @@ function loadPokemon(pokemon) {
 
 async function mountComboBox() {
   let data = await loadPokemon()
-  console.log(data)
   let pokeArray = data.results.sort((a, b) => {
     if(a.name < b.name) { 
       return -1 
@@ -107,7 +106,7 @@ async function showCard() {
   }
 
   img = data.sprites.other.dream_world.front_default
-  image.src = img ? img : `./info/no-image`
+  image.src = img ? img : `./src/images/no-image`
   let color = circleColor(data.types[0].type.name)
 
   let ability1 = data.abilities[0].ability.name
@@ -122,21 +121,21 @@ async function showCard() {
   let circle = document.querySelector('.circle')
   circle.style.background = `${color}`
 
-  console.log(ability1)
-  console.log(ability2)
-
-  ability1 !== null ? abl1.style.background = `${color}` : abl1.style.background = ''
-  ability2 !== null ? abl2.style.background = `${color}` : abl2.style.background = ''
+  ability1 ? 
+    abl1.style.background = `${color}` 
+  : abl1.style.background = ''
+  
+  ability2 ? 
+    abl2.style.background = `${color}` 
+  : abl2.style.background = ''
 }
 
 function circleColor(type){
-
   let hex = getHex(type)
   return hex
 }
 
 function getHex(type) {
-
   const colors = [
     {type: "normal", hex: "#B7B7A9"},
     {type: "fire", hex: "#FF6144"},
@@ -182,13 +181,7 @@ async function addToPokedex(pokemon){
                     .other
                       .dream_world.front_default
 
-  if (count >= 3){
-    btnAdd.disabled = true
-    toggleConfirm(true)
-  }else{
-    btnAdd.disabled = false
-    toggleConfirm(false)
-  }
+  toggleConfirm()
 
   let div = document.createElement('div')
   div.id = data.id
@@ -244,13 +237,7 @@ async function addToPokedex(pokemon){
     pokemon.style.display = "none"
     count = count - 1
 
-    if (count >= 3){
-      btnAdd.disabled = true
-      toggleConfirm(true)
-    }else{
-      btnAdd.disabled = false
-      toggleConfirm(false)
-    }
+    toggleConfirm()
   })
 
   div.appendChild(ul)
@@ -266,11 +253,13 @@ async function addToPokedex(pokemon){
   pokeList.appendChild(div)
 }
 
-function toggleConfirm(value){
-  if(value === true){
+function toggleConfirm(){
+  if(count >= 3){
+    btnAdd.disabled = true
     btnConfirm.style.display = "block"
   }else{
     btnConfirm.style.display = "none"
+    btnAdd.disabled = false
   }
 }
 

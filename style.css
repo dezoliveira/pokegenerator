@@ -43,8 +43,7 @@ h1 {
 }
 
 .card {
-  /* width: 430px;
-  height: 300px; */
+  position: relative;
   padding: 15px;  
 
   display: flex;
