@@ -8,5 +8,8 @@ O usuário deveria escolher 3 pokemons para iniciar a sua aventura. Os dados pri
 
 Projeto feito utilizando o conceito de Programação Funcional.
 
-https://dezoliveira.github.io/pokegenerator/![2023-02-12_22-39](https://user-images.githubusercontent.com/85899665/218352028-a2e10264-c424-45f9-a047-83ead880fb09.png)
+https://dezoliveira.github.io/pokegenerator/
+
+![2023-02-12_22-39](https://user-images.githubusercontent.com/85899665/218352319-beb1f814-15b8-4c86-8453-7b6d114fe7cd.png)
+
 
